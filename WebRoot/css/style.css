@@ -1,0 +1,119 @@
+/*��ʼ��*/
+ul,li,p {margin: 0; padding: 0; list-style: none}
+a,.a{ color: #000; }
+img{ border: 0;border-image-width:0;}
+label{ color: #888; font-weight: normal}
+a:hover,.a:hover{ text-decoration:  none;color: #d43f3a }
+body{ background: #eeedeb; font-family: "helvetica neue",arial,sans-serif,"΢���ź�"; font-size: 12px; }
+.clearfix:after{ content: ""; display: block; clear: both;}
+.fl{ float: left }
+.fr{ float: right }
+.clear{ clear: both}
+.textOverflow { overflow: hidden; white-space: nowrap; text-overflow: ellipsis}
+.row{margin: 0}
+/*    header    */
+#header{width: 100%; background: #ffffff; padding: 16px 20px 10px 20px; height: 60px; position: fixed;left: 0;
+    top: 0; z-index: 10; box-shadow: 0px 0px 10px #ddd;  }
+#logo{ width:80px; height: 26px; display: block; float: left;  color: #000 ;font-size: 22px; line-height: 25px;
+    margin-top: 4px;  font-weight: 500;}
+#logo img{ width: 100%; height: 100%; vertical-align: middle; position: relative ;top: -3px; }
+.nav-form{ float: left ; }
+#header .nav-info{ float: left;}
+.nav-info li{ float: left; line-height: 25px; height: 25px; padding: 0 15px; font-size: 17px;
+    margin-top: 5px;}
+ .nav-info li+li{margin-left: 5px;}
+#header .self-info{ background: #f7f7f7 ; position:relative; top:-5px;padding: 8px 12px; border: 0; border-left: 1px solid #ebebeb; border-right: 1px solid #ebebeb }
+#header .self-pis-wrapper{padding: 4px 8px;}
+#header .self-pic{ width: 35px; height: 35px; }
+
+/*  article ���� */
+.main{ margin-top:120px; background: #ffffff;position: relative; width: 100%}
+.myablity{ background: #fafafa; border-top: 1px solid #ededed;
+     }
+.myPic{ width: 140px; height: 140px; padding:15px; position:absolute; left:10px; top:-40px;
+    background: #ffffff }
+.myPic img{ width: 100%; height: 100%;}
+.main .username{ margin-left: 160px; height: 100px; position: relative; top: 12px}
+.main .username strong{ font-weight: 200; color: #777}
+.main .comment{margin-top: 10px; }
+.main .comment>span:FIRST-CHILD{ color:#00A1CC ;padding: 4px 6px; font-size:16px}
+.myablity li{ height: 40px;  line-height: 40px; font-size: 17px; border-right: 1px solid #ededed }
+.myablity .active{ background: none; background: #fcfcfc}
+.myablity li a{ color:#777;}
+/*    �ٲ���   */
+#showimg{ margin-top: 30px; position: relative;}
+
+    .toAddImg { width: 230px; height: 114px; background: none; border: 2px dashed #a9a9a9 ;background: #f4f4f3;
+        text-align: center; color: #777;position: absolute; top: 0; left: 0;}
+    .toAddImg  .addImgBg{ width: 48px; height: 48px; margin-top:10px; background: url("../img/icon_add.png") no-repeat;
+        background-position: 0px 0px; margin-top: 20px;}
+    .toAddImg:hover{ color: #6b6b6b}
+    .toAddImg:hover  .addImgBg{ background-position: 0px -80px;}
+
+    .oSelfInfo{ position: absolute; width: 230px; box-shadow: 0 0 10px #ddd; background: #fafafa }
+    .oSelfInfo .userpic{ width: 100%; height: auto; position: relative;}
+    .oSelfInfo .userpic>a{ display:block ;width: 100%; height: auto; }
+    .oSelfInfo .userpic>a>img{ display:block ;width: 100%; height: auto; }
+     .oSelfInfo .userpic>section{ width:100%; height: 100%; position: absolute; left: 0; top: 0; background: rgba(255,255,255,.3) ; padding: 5px; opacity:0;transition:all .5s }
+     .oSelfInfo:HOVER .userpic>section{ opacity:1; } 
+        .picDetail{ width: 100%; height: 67px; box-shadow: inset 0 0 4px #ebebeb;background: #fafafa;
+            padding: 15px;}
+            .userLogo{ width:34px; height: 34px;display: block; float: left;margin-right: 10px;  }
+            .userLogo img{ width: 100%; height: 100%; }
+        .picDetail div{ height: 34px; width: 170px; color: #777;}
+        .picDetail div p a{ color: #9e7e6b; }
+        .picDetail div p a:hover{ text-decoration: underline}
+        .picDetail div p:first-child a{ margin-right: 5px; }
+    	
+/*   �ٲ���β�� */
+#loader { width: 100%; height: 60px; background: url("../img/loader.gif") no-repeat center; position: fixed;
+    left: 0; bottom: 0; display: none}
+body{position: relative;}
+#loader1 { width: 100%; height: 70px; height: background: url("../img/end.png") no-repeat center; display: block}
+    .section{ width: 180px; padding: 10px; background: #ffffff; }
+
+/*   ��������   */
+.uploadLabel {border: 3px dashed #ddd;
+    background: url("../img/sct_01.png") no-repeat center; display: block; height: 230px;
+}
+.drop{ text-align: center}
+.droplabel{
+     height:auto; font-size: 25px; padding: 140px 0 10px 0; text-align: center; color: #999999;margin-left: 30px; margin-right: 30px;
+}
+
+
+
+#showimglist li{
+    width: 200px; height: 240px; border: 5px solid transparent; float: left;margin-bottom: 14px; overflow: hidden; position: relative;
+}
+#showimglist li img{ width: auto;height:196px;  overflow: hidden }
+	.progress{ width:40%; background: #f1f1f1; border-radius:5px; height: 10px; display: inline-block; position: relative; top:18px; left: 10px; overflow: hidden;}
+		.progress .length{ height: 100%; width: 0%; background: #66aabb }
+	.finish{ color: #888; margin-left: 15px; }
+/* span1���� */
+.span1{ margin-top: 70px;  background: #ffffff; box-shadow: 0 0 10px #aaa; border-radius: 4px; margin-bottom: 100px; padding-bottom:15px;}
+    .userCommon{ height:50px; line-height: 50px; border-bottom: 1px dashed #ddd }
+    .userCommon.caption{ font-size: 22px; text-align: center; border-bottom: 2px solid #dddddd;  height:65px; line-height: 65px;}
+        .caption strong{ font-style: normal; font-weight: 500;  }
+        .userNav{ position: relative; left: 3.3333333%; margin-bottom: 15px;}
+            .adduser{ font-size: 14px;  color: #333333; width: 100%; border-bottom: 1px solid #ededed;}
+            .adduser>.userCommon>span:first-child{ font-size: 15px; color: #333333; opacity: .7;
+                -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+                filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70); }
+            .adduser .userCommon:hover{ background: #fafafa;}
+                .adduserdetail{ padding: 10px; position:relative;}
+                    .addouter{width: 240px; height: 240px; display: inline-block; position: relative;}
+	                    .adduserpic{height: 230px;width:230px; position:relative;display:inline-block; padding: 15px; border: 1px solid #dddddd; box-shadow: 0 0 10px #eee;
+	                    background: url("../img/default_userpic.jpg") no-repeat center; background-size: 200px 200px; vertical-align: middle ;
+	                    display: inline-block; margin-right: 30px; cursor: pointer; transition:all 3s}
+	                    .adduserpic div{ position: absolute; top: 0; left: 0; right:0; bottom:0;  background: url("../img/loader.gif") no-repeat center, rgba(255,255,255,.6); display: none; }
+	                    .addimg{ padding: 4px 35px; color: #666}
+	                    .adduserpic img{  height: 200px; width: 200px; }
+                    .addouter .adduserpic img{ max-width: 200px; width: auto;}
+                    .addouter .adduserpic{ background: none; min-width:100px; max-width:230px;}
+                    
+/* span2部分 */
+#showimg.span2{ margin-top:70px; }
+
+.userselfpic{ width: 40px; height: 40px; position:relative; padding:2px; top:2px; border: 1px solid #ddd;  display: inline-block; }
+.userselfpic img{width: 100%; height: 100%; margin-top:-18px;}

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 这里的name为struts2-core.jar下的default.properties的键值对 的name值   contant这个标签是来 
+		常用的有 martipart 文件最大包  
+		struts.xml修改时自动加载 
+	 -->
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<!-- 默认访问action结尾的方式 -->
+	<constant name="struts.action.extension" value="action,do,,"/>
+	<!-- 修改默认文件上传的大小 -->
+	<constant name="struts.multipart.maxSize" value="2097152000"></constant>
+   <!-- strut标签使用的模板freemarker -->
+   <constant name="struts.ui.theme" value="simple"></constant>
+   <!-- 表示Action由Spring来进行创建，可以直接使用Spring依赖注入来注入 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 定义异常处理界面 -->
+   	
+    <package name="default" namespace="/User"  extends="struts-default">
+		<global-results>
+    		<result name="redirect" >${url}</result>
+    		<result name="exception">../error.jsp</result>
+    	</global-results> 
+    	
+    	<global-exception-mappings>
+   			<exception-mapping result="exception" exception="com.huaban.exception.CaijiException"></exception-mapping>
+   		</global-exception-mappings> 
+   		
+   		<action name="userAction" method="addUser" class="userAction">
+   			<result name="userPicture" type="redirect">/userPicture.jsp</result>
+   		</action>
+   		
+   		<!-- 用户注销  -->
+   		<action name="userInvalidate" method="userInvalidate" class="userInvalidate">
+   			<result name="success">/index.jsp</result>
+   		</action>
+   		
+   		<!-- 用户登录  -->
+   		<action name="userlogin" method="loginUser" class="userAction">
+   			<result name="success">/userPicture.jsp</result>
+   		</action>
+   		
+   		<!-- 用户成员显示 -->
+		<action name="finduser" method="finduser" class="userAction">
+			<result name="success">/findUser.jsp</result>
+		</action>
+		
+		<!-- 用户管理 -->
+		<action name="usermanager" method="usermanager" class="userAction">
+			<result name="success">/UserManage.jsp</result>
+		</action>
+		
+	
+    </package>
+    
+    
+    <package name="picture" namespace="/Picture"  extends="struts-default">
+		<global-results>
+    		<result name="redirect" type="redirect" >${url}</result>
+    		<result name="exception">../error.jsp</result>
+    		
+    	</global-results> 
+    	
+    	<global-exception-mappings>
+   			<exception-mapping result="exception" exception="com.huaban.exception.CaijiException"></exception-mapping>
+   		</global-exception-mappings> 
+   		
+   		<action name="findpictureList" method="findpictureList" class="pictureAction">
+   			<result name="success">/index.jsp</result>
+   		</action>
+   		
+   		<action name="commonUserPicture" method="commonUserPicture" class="pictureAction">
+   			<result name="success">/commonUserPicture.jsp</result>
+   		</action>
+   		
+   		<!-- 非用户logo图片更新跳转 -->
+    	<action name="updatepicreforward"  class="pictureAction" method="updatepicreforward">
+    		<result name="success">/UpdatePicture.jsp</result>
+    	</action>
+   		
+    </package>
+     	
+
+    
+    
+    
+    <package name="ajax" namespace="/Ajax" extends="json-default">
+    	<action name="picAction" class="pictureAction" method="addPicTure"> 
+		 <result type="json">  
+              <param name="excludeNullProperties">true</param>  
+           </result>  
+      	</action>
+      	
+      	<action name="userPictureList" class="pictureAction" method="userPictureList"> 
+      		<result type="json">  
+              <param name="excludeNullProperties">true</param>  
+           </result>  
+      	</action>
+      	
+      	<action name="PictureList" class="pictureAction" method="pictureList"> 
+      		<result type="json">  
+              <param name="excludeNullProperties">true</param>  
+           </result>  
+      	</action>
+      	
+      	
+      	<action name="updateUserAction" class="userJsonAction" method="update">
+    		<result type="json">  
+              <param name="excludeNullProperties">true</param>  
+           </result>
+    	</action>
+    	
+    	<action name="updatePhoto" class="userJsonAction" method="updatePhoto">
+    		<result type="json">  
+              <param name="excludeNullProperties">true</param>  
+           </result>
+    	</action>
+    	
+    	<!-- 生成commonuserList pager -->
+    	<action name="commonUserPictureList" class="pictureAction" method="commonUserPictureList">
+    		<result type="json">  
+              <param name="excludeNullProperties">true</param>  
+           </result>
+    	</action>
+    	
+    	<!-- 用户图片删除 -->
+    	<action name="deletePic" class="pictureAction" method="delepic">
+    		<result type="json">  
+              <param name="excludeNullProperties">true</param>  
+           </result>
+    	</action>
+    	
+    	<action name="updatePics"  class="pictureAction" method="updatePics">
+    		<result type="json">  
+              <param name="excludeNullProperties">true</param>  
+           </result>
+    	</action>
+    	
+    	<!-- 修改图片的信息 -->
+    	<action name="updatePicAction"  method="updatePicAction" class="pictureAction">
+    		<result type="json">  
+              <param name="excludeNullProperties">true</param>  
+           </result>
+    	</action>
+    	
+   		<!-- 用户管理 -->
+		<action name="deleteuser" method="deleteuser" class="userJsonAction">
+			<result type="json">  
+              <param name="excludeNullProperties">true</param>  
+           </result>
+		</action>
+    	
+    </package>
+	
+
+</struts>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>Caiji</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file> 
+  </welcome-file-list>
+  
+  		  <!-- 进行字符编码处理的filter，必须在OpenSessionInViewerFilter之前 -->
+  	<filter>
+		<filter-name>CharacterFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+  	<!-- 设置pagerfilter -->
+	<filter>
+		<filter-name>pager</filter-name>
+		<filter-class>com.huaban.filter.PagerFilter</filter-class>
+		<init-param>
+			<param-name>pageSize</param-name>
+			<param-value>15</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>pager</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>  
+	
+  	 <!-- 以下两个配置 是为了保证 bean.xml在服务器启动时被加载 -->
+	 <!-- 创建Spring的监听器 -->
+	 <listener>
+	    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener> 
+
+	 <!-- Spring 的监听器可以通过这个上下文参数来获取beans.xml的位置    -->
+ 	 <context-param>
+	   <param-name>contextConfigLocation</param-name>
+	   <param-value>classpath*:beans.xml</param-value>
+	 </context-param>  
+	   
+	 
+	 <!-- Spring中提供了
+	  org.springframework.orm.hibernate4.support.OpenSessionInViewFilter;
+	  这个类来实现OpenSessionInViewer的操作 解决加载延迟 这里是使用threadlocal实现的-->
+  	<filter>
+		<filter-name>openSessionInViewerFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>openSessionInViewerFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+
+  
+  
+  <!-- struts的过滤器 拦截所有的请求 并且被struts 控制  所以要想加入filter必须在这之前 如果在这之下还有其他的过滤器则不能正常执行  -->
+    <filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
